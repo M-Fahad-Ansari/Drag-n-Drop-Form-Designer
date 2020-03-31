@@ -1,0 +1,30 @@
+<li *ngFor="let form of Forms">
+    <div class="info card">
+        <div class="name">
+            <b>Form Name:</b>
+            <span>{{form.formName}}</span>
+            <br>
+            <b *ngIf="form.actionUrl">Action URL:</b>
+            <!-- (form.actionType == 'Custom URL') ? form.actionUrl : form.actionType -->
+            <span class="text-blue" *ngIf="form.actionUrl">{{ form.actionUrl }}</span>
+
+        </div>
+        <div class="name" *ngIf="form.lastModified">
+            <b> Modified At:</b>
+            <span>{{form.lastModified.date | agoPipe}}</span>
+            <br>
+            <b>Modified By:</b>
+            <span class="text-blue">{{form.lastModified.by }}</span>
+        </div>
+        <div class="actions">
+            <button type="button" class="btn btn-transparent svgOnHover" (click)="EditForm(form)">
+                <img class="svg" src="/assets/img/icons/svg/edit-outline.svg" alt="" width="20">
+                <img class="svg hover" src="/assets/img/icons/svg/edit-filled.svg" alt="" width="20">
+            </button>
+            <button type="button" class="btn btn-transparent svgOnHover" (click)="DeleteForm(form._id)">
+                <img class="svg" src="/assets/img/icons/svg/delete-outline.svg" alt="" width="20">
+                <img class="svg hover" src="/assets/img/icons/svg/delete-filled.svg" alt="" width="20">
+            </button>
+        </div>
+    </div>
+</li>
